@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 import io.DutchSlayer.attack.enemy.fsm.EnemyState; // Import EnemyState
+import io.DutchSlayer.config.AssetPaths;
 
 public class EnemyVisuals {
 
@@ -27,19 +28,19 @@ public class EnemyVisuals {
     }
 
     private void loadAssets() {
-        deadTexture = new Texture(Gdx.files.internal("enemy/enemy_dead.png"));
+        deadTexture = new Texture(Gdx.files.internal(AssetPaths.EnemyAttack.DEAD));
 
         Array<TextureRegion> runFrames = new Array<>();
 
         if (attackType == AttackType.BURST_FIRE) {
 
-            idleTexture = new Texture(Gdx.files.internal("enemy/enemy_run_ar1.png"));
+            idleTexture = new Texture(Gdx.files.internal(String.format(AssetPaths.EnemyAttack.RUN_AR_FRAME, 1)));
             idleFrame = new TextureRegion(idleTexture);
             runTextures.add(idleTexture);
             runFrames.add(idleFrame);
 
             for (int i = 2; i <= 4; i++) {
-                Texture runTex = new Texture(Gdx.files.internal("enemy/enemy_run_ar" + i + ".png"));
+                Texture runTex = new Texture(Gdx.files.internal(String.format(AssetPaths.EnemyAttack.RUN_AR_FRAME, i)));
                 runTextures.add(runTex);
                 runFrames.add(new TextureRegion(runTex));
             }
@@ -47,11 +48,11 @@ public class EnemyVisuals {
             runAnimation = new Animation<>(0.1f, runFrames, Animation.PlayMode.LOOP);
 
         } else {
-            idleTexture = new Texture(Gdx.files.internal("enemy/enemy_run1.png"));
+            idleTexture = new Texture(Gdx.files.internal(String.format(AssetPaths.EnemyAttack.RUN_FRAME, 1)));
             idleFrame = new TextureRegion(idleTexture);
 
             for (int i = 1; i <= 5; i++) {
-                Texture runTex = new Texture(Gdx.files.internal("enemy/enemy_run" + i + ".png"));
+                Texture runTex = new Texture(Gdx.files.internal(String.format(AssetPaths.EnemyAttack.RUN_FRAME, i)));
                 if (i > 1 || !runTex.equals(idleTexture)) {
                     runTextures.add(runTex);
                 }

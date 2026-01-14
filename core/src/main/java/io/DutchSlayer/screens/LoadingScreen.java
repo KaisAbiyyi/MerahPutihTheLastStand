@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 
 import io.DutchSlayer.attack.screens.GameScreen;
 import io.DutchSlayer.defend.screens.TowerDefenseScreen;
@@ -40,8 +41,8 @@ public class LoadingScreen implements Screen {
         stage = new Stage(viewport, game.batch);
         Gdx.input.setInputProcessor(stage);
 
-        skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
-        backgroundTexture = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        skin = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
+        backgroundTexture = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
 
         BitmapFont defaultFont = skin.getFont("default-font");
         if (defaultFont == null) {

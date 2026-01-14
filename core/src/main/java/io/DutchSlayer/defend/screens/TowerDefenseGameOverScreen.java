@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.screens.MainMenuScreen;
 import io.DutchSlayer.defend.game.GameConstants;
 import io.DutchSlayer.screens.ModeSelectionScreen;
@@ -51,15 +52,15 @@ public class TowerDefenseGameOverScreen implements Screen {
 
         this.viewport = new FitViewport(Constant.SCREEN_WIDTH, Constant.SCREEN_HEIGHT);
         this.stage = new Stage(viewport);
-        this.skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
+        this.skin = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
 
-        backgroundTexture = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        backgroundTexture = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
         initializeCustomButtonStyle();
 
         if (isGameWon) {
-            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgrounds/WinMusic.mp3"));
+            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(AssetPaths.Music.WIN));
         } else {
-            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgrounds/LoseMusic.mp3"));
+            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(AssetPaths.Music.LOSE));
         }
         backgroundMusic.setLooping(true);
         backgroundMusic.setVolume(0.5f);

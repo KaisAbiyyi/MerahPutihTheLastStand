@@ -12,6 +12,7 @@ import io.DutchSlayer.attack.boss.fsm.TankBossFSM;
 import io.DutchSlayer.attack.boss.fsm.TankBossState;
 import io.DutchSlayer.attack.player.Player;
 import io.DutchSlayer.attack.screens.GameScreen;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.utils.Constant;
 
 
@@ -52,12 +53,12 @@ public class TankBoss {
         this.fsm.initialize();
         this.gameScreen = gameScreen;
 
-        turretTexture = new Texture("boss/tank_boss_turret.png");
-        chargingTexture = new Texture("boss/tank_boss_charging.png");
-        grenadeTexture = new Texture("boss/tank_boss_grenade.png");
-        grenadeProjectileTexture = new Texture("player/grenade.png");
-        destroyedTexture = new Texture("boss/tank_boss_destroyed.png");
-        explosionTexture = new Texture("player/explosion.png");
+        turretTexture = new Texture(AssetPaths.Boss.TANK_TURRET);
+        chargingTexture = new Texture(AssetPaths.Boss.TANK_CHARGING);
+        grenadeTexture = new Texture(AssetPaths.Boss.TANK_GRENADE);
+        grenadeProjectileTexture = new Texture(AssetPaths.Player.GRENADE);
+        destroyedTexture = new Texture(AssetPaths.Boss.TANK_DESTROYED);
+        explosionTexture = new Texture(AssetPaths.Player.EXPLOSION);
         currentTexture = turretTexture;
         currentRegion = new TextureRegion(currentTexture);
 
@@ -66,12 +67,12 @@ public class TankBoss {
         }
         batch = new SpriteBatch();
 
-        chargeSound = Gdx.audio.newSound(Gdx.files.internal("boss/tank_boss_charging.mp3"));
-        prepareChargeSound = Gdx.audio.newSound(Gdx.files.internal("boss/tank_boss_prepare_to_charge.mp3"));
-        bulletSound = Gdx.audio.newSound(Gdx.files.internal("boss/tank_boss_bullet.mp3"));
-        grenadeThrowSound = Gdx.audio.newSound(Gdx.files.internal("boss/tank_boss_grenade.mp3"));
-        grenadeExplosionSound = Gdx.audio.newSound(Gdx.files.internal("player/grenade.mp3"));
-        destroyedSound = Gdx.audio.newSound(Gdx.files.internal("boss/tank_boss_destroyed.mp3"));
+        chargeSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.TANK_CHARGING));
+        prepareChargeSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.TANK_PREPARE_CHARGE));
+        bulletSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.TANK_BULLET));
+        grenadeThrowSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.TANK_GRENADE));
+        grenadeExplosionSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.GRENADE));
+        destroyedSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.TANK_DESTROYED));
 
     }
 

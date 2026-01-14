@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import io.DutchSlayer.config.AssetPaths;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -47,8 +48,8 @@ public class AboutScreen implements Screen {
         this.game = game;
         this.viewport = new FitViewport(Constant.SCREEN_WIDTH, Constant.SCREEN_HEIGHT);
         this.stage = new Stage(viewport);
-        this.skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
-        this.background       = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        this.skin = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
+        this.background       = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
 
         initializeCustomButtonStyle();
         createUI();

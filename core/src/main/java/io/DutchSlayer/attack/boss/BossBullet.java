@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.utils.Constant;
 
 public class BossBullet {
@@ -22,7 +23,7 @@ public class BossBullet {
         this.y = startY;
         this.vx = 400f * directionX;
 
-        this.bulletFullTexture = new Texture("boss/boss_bullet.png");
+        this.bulletFullTexture = new Texture(AssetPaths.Boss.BULLET);
         this.bulletRegion = new TextureRegion(bulletFullTexture);
 
         if (bossFacingRight && !bulletRegion.isFlipX()) {

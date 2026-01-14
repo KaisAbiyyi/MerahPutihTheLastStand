@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import io.DutchSlayer.config.AssetPaths;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -48,12 +49,12 @@ public class PauseMenu {
         this.gameScreenRef = gameScreen;
         this.stage = new Stage(viewport);
 
-        Texture bgTexture = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        Texture bgTexture = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
         Image bgImage = new Image(bgTexture);
         bgImage.setSize(viewport.getWorldWidth(), viewport.getWorldHeight());
         stage.addActor(bgImage);
 
-        Image bgOverlay = new Image(new Texture(Gdx.files.internal("white.png")));
+        Image bgOverlay = new Image(new Texture(Gdx.files.internal(AssetPaths.Objects.WHITE)));
         bgOverlay.setColor(0, 0, 0, 0.6f);
         bgOverlay.setSize(viewport.getWorldWidth(), viewport.getWorldHeight());
         stage.addActor(bgOverlay);

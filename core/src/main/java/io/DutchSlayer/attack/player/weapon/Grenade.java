@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.utils.Constant;
 
 public class Grenade {
@@ -45,8 +46,8 @@ public class Grenade {
         this.grenadeTexture = grenadeTexture;
         this.explosionTexture = explosionTexture;
 
-        this.explosionSound = Gdx.audio.newSound(Gdx.files.internal("player/grenade.mp3"));
-        this.groundHitSound = Gdx.audio.newSound(Gdx.files.internal("player/grenade_ground.mp3"));
+        this.explosionSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.GRENADE));
+        this.groundHitSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.GRENADE_GROUND));
     }
 
     public boolean isEnemyGrenade() {

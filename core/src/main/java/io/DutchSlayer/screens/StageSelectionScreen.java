@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.defend.utils.AudioManager;
 import io.DutchSlayer.utils.Constant;
 
@@ -54,8 +55,8 @@ public class StageSelectionScreen implements Screen {
         viewport = new FitViewport(Constant.SCREEN_WIDTH, Constant.SCREEN_HEIGHT, camera);
         stage = new Stage(viewport);
         Gdx.input.setInputProcessor(stage);
-        skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
-        background = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        skin = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
+        background = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
 
         initializeCustomButtonStyles();
         createUI();

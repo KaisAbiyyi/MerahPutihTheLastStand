@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.defend.screens.TowerDefenseScreen;
 import io.DutchSlayer.defend.utils.AudioManager;
 // import io.DutchSlayer.defend.utils.TDConstants; // Perhatikan jika TDConstants.SCREEN_WIDTH/HEIGHT berbeda dari Constant - TDConstants is not used, can remove
@@ -83,9 +84,9 @@ public class SettingScreen implements Screen {
 
         this.viewport = new FitViewport(Constant.SCREEN_WIDTH, Constant.SCREEN_HEIGHT);
         this.stage = new Stage(viewport);
-        this.skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
+        this.skin = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
 
-        this.background = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        this.background = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
         // this.titleTexture = new Texture(Gdx.files.internal("button/SettingScreen.png")); // REMOVED
 //        this.volumeTexture = new Texture(Gdx.files.internal("button/volume.png"));
 

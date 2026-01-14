@@ -8,6 +8,7 @@ import io.DutchSlayer.attack.player.weapon.Grenade;
 import io.DutchSlayer.attack.player.weapon.Pistol;
 import io.DutchSlayer.attack.player.weapon.Weapon;
 import io.DutchSlayer.attack.screens.GameScreen;
+import io.DutchSlayer.config.AssetPaths;
 
 public class PlayerCombat {
 
@@ -22,8 +23,8 @@ public class PlayerCombat {
         this.playerRef = playerReference;
         this.gameScreenRef = gameScreenReference;
         this.currentWeapon = new Pistol();
-        this.throwSound = Gdx.audio.newSound(Gdx.files.internal("player/grenade_throw.mp3"));
-        this.playerDiesSound = Gdx.audio.newSound(Gdx.files.internal("player/player_dies.mp3"));
+        this.throwSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.GRENADE_THROW));
+        this.playerDiesSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.DIES));
     }
 
     public void update(float delta, PlayerState playerState, boolean fireInput, boolean grenadeInput) {

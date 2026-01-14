@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.screens.MainMenuScreen;
 import io.DutchSlayer.screens.ModeSelectionScreen;
 import io.DutchSlayer.utils.Constant;
@@ -42,12 +43,12 @@ public class GameVictoryScreen implements Screen {
         this.game = game;
         stage = new Stage(new FitViewport(Constant.SCREEN_WIDTH, Constant.SCREEN_HEIGHT), game.batch);
         Gdx.input.setInputProcessor(stage);
-        skin = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
+        skin = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
 
-        backgroundTexture = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        backgroundTexture = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
         initializeCustomButtonStyle();
 
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgrounds/WinMusic.mp3"));
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(AssetPaths.Music.WIN));
         backgroundMusic.setLooping(true);
         backgroundMusic.setVolume(0.5f);
 

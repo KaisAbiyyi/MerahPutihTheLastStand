@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.MathUtils;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.utils.Constant; // Pastikan import Constant sudah benar
 
 public class PlayerMovement {
@@ -12,8 +13,8 @@ public class PlayerMovement {
     private final Sound jumpSound;
 
     public PlayerMovement() {
-        this.dashSound = Gdx.audio.newSound(Gdx.files.internal("player/dash.mp3"));
-        this.jumpSound = Gdx.audio.newSound(Gdx.files.internal("player/player_jump.mp3"));
+        this.dashSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.DASH));
+        this.jumpSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.JUMP));
     }
 
     public void update(float delta, PlayerState state) {

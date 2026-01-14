@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.defend.utils.AudioManager;
 import io.DutchSlayer.utils.Constant;
 
@@ -49,8 +50,8 @@ public class MainMenuScreen implements Screen {
         this.game       = game;
         this.viewport   = new FitViewport(Constant.SCREEN_WIDTH, Constant.SCREEN_HEIGHT);
         this.stage      = new Stage(viewport);
-        this.skin       = new Skin(Gdx.files.internal("uiskin/uiskin.json"));
-        this.background = new Texture(Gdx.files.internal("backgrounds/Main Menu.png"));
+        this.skin       = new Skin(Gdx.files.internal(AssetPaths.Ui.SKIN));
+        this.background = new Texture(Gdx.files.internal(AssetPaths.Ui.MAIN_MENU));
 
         // Removed titleTexture initialization
         // this.titleTexture    = new Texture(Gdx.files.internal("button/DutchSlayer.png"));

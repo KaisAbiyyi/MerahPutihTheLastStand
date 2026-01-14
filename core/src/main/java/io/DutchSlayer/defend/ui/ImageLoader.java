@@ -2,8 +2,14 @@ package io.DutchSlayer.defend.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.defend.entities.towers.TowerType;
 
+/**
+ * Legacy image loader for tower defense mode.
+ * @deprecated Use {@link TextureManager} instead for better resource management.
+ */
+@Deprecated
 public class ImageLoader {
     public static Texture grassTex;
     public static Texture terratex;
@@ -68,91 +74,87 @@ public class ImageLoader {
     public static Texture SettingBtn;
 
     public static void load() {
-        grassTex = loadOrNull("Defend/Grass1.png");
-        terratex = loadOrNull("backgrounds/terrain3.png");
-        skytex = loadOrNull("backgrounds/Background1.png");
+        // Environment
+        terratex = loadOrNull(AssetPaths.Backgrounds.TERRAIN_3);
+        skytex = loadOrNull(AssetPaths.Backgrounds.BG);
 
-        enemyTex = loadOrNull("Defend/Enemy/Enemy.png");
-        dutchtex = loadOrNull("Defend/Enemy/DutchBasic.png");
-        enemyBasicTex = loadOrNull("Defend/Enemy/DutchBasic.png");
-        enemyShooterTex = loadOrNull("Defend/Enemy/DutchShooter.png");
-        enemyBomberTex = loadOrNull("Defend/Enemy/DutchBomber.png");
-        enemyShieldTex = loadOrNull("Defend/Enemy/DutchShield.png");
-        enemyBossTex = loadOrNull("Defend/Enemy/DutchBoss.png");
-        bombAssetTex = loadOrNull("Defend/Projectile/Bomb.png");
-        enemyProjectileTex = loadOrNull("Defend/Projectile/Projectile2.png");
-        bossProjectileTex = loadOrNull("Defend/Projectile/BossProjectile.png");
+        // Enemies
+        enemyTex = loadOrNull(AssetPaths.EnemyDefend.ENEMY);
+        dutchtex = loadOrNull(AssetPaths.EnemyDefend.DUTCH_BASIC);
+        enemyBasicTex = loadOrNull(AssetPaths.EnemyDefend.DUTCH_BASIC);
+        enemyShooterTex = loadOrNull(AssetPaths.EnemyDefend.DUTCH_SHOOTER);
+        enemyBomberTex = loadOrNull(AssetPaths.EnemyDefend.DUTCH_BOMBER);
+        enemyShieldTex = loadOrNull(AssetPaths.EnemyDefend.DUTCH_SHIELD);
+        enemyBossTex = loadOrNull(AssetPaths.EnemyDefend.DUTCH_BOSS);
+        
+        // Projectiles
+        bombAssetTex = loadOrNull(AssetPaths.Projectile.BOMB);
+        enemyProjectileTex = loadOrNull(AssetPaths.Projectile.BASIC_2);
+        bossProjectileTex = loadOrNull(AssetPaths.Projectile.BOSS);
 
-        enemyBasicFrames[0] = loadOrNull("Defend/Enemy/enemyBasic/EnemyB1.png");
-        enemyBasicFrames[1] = loadOrNull("Defend/Enemy/enemyBasic/EnemyB2.png");
-        enemyBasicFrames[2] = loadOrNull("Defend/Enemy/enemyBasic/EnemyB3.png");
-        enemyBasicFrames[3] = loadOrNull("Defend/Enemy/enemyBasic/EnemyB4.png");
+        // Enemy animation frames
+        for (int i = 0; i < 4; i++) {
+            enemyBasicFrames[i] = loadOrNull(AssetPaths.getFramePath(AssetPaths.EnemyDefend.BASIC_FRAME, i + 1));
+            enemyShieldFrames[i] = loadOrNull(AssetPaths.getFramePath(AssetPaths.EnemyDefend.SHIELD_FRAME, i + 1));
+            enemyShooterFrames[i] = loadOrNull(AssetPaths.getFramePath(AssetPaths.EnemyDefend.SHOOTER_FRAME, i + 1));
+            enemyBomberFrames[i] = loadOrNull(AssetPaths.getFramePath(AssetPaths.EnemyDefend.BOMBER_FRAME, i + 1));
+        }
 
-        enemyShieldFrames[0] = loadOrNull("Defend/Enemy/enemyShield/enemyS1.png");
-        enemyShieldFrames[1] = loadOrNull("Defend/Enemy/enemyShield/enemyS2.png");
-        enemyShieldFrames[2] = loadOrNull("Defend/Enemy/enemyShield/enemyS3.png");
-        enemyShieldFrames[3] = loadOrNull("Defend/Enemy/enemyShield/enemyS4.png");
+        // Towers
+        towerTex = loadOrNull(AssetPaths.Tower.BASE_2);
+        maintowertex = loadOrNull(AssetPaths.Tower.MAIN);
+        tower1Tex = loadOrNull(AssetPaths.Tower.AOE_ICON);
+        tower2Tex = loadOrNull(AssetPaths.Tower.SPEED_ICON);
+        tower3Tex = loadOrNull(AssetPaths.Tower.DEFENSIVE_ICON);
+        
+        // Tower animation frames
+        towerAOEFrames[0] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.AOE_FRAME, 1));
+        towerAOEFrames[1] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.AOE_FRAME, 2));
+        towerSpeedFrames[0] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.SPEED_FRAME, 1));
+        towerSpeedFrames[1] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.SPEED_FRAME, 2));
+        towerDefensifFrames[0] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.DEFENSIVE_FRAME, 1));
+        towerDefensifFrames[1] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.DEFENSIVE_FRAME, 2));
+        towerDefensifFrames[2] = loadOrNull(AssetPaths.getFramePath(AssetPaths.Tower.DEFENSIVE_FRAME, 3));
 
-        enemyShooterFrames[0] = loadOrNull("Defend/Enemy/enemyShooter/EnemyST1.png");
-        enemyShooterFrames[1] = loadOrNull("Defend/Enemy/enemyShooter/EnemyST2.png");
-        enemyShooterFrames[2] = loadOrNull("Defend/Enemy/enemyShooter/EnemyST3.png");
-        enemyShooterFrames[3] = loadOrNull("Defend/Enemy/enemyShooter/EnemyST4.png");
+        // Projectiles
+        projTex = loadOrNull(AssetPaths.Projectile.BASIC_2);
+        projtowtex = loadOrNull(AssetPaths.Projectile.BASIC_1);
+        aoeProjTex = loadOrNull(AssetPaths.Projectile.AOE);
+        fastProjTex = loadOrNull(AssetPaths.Projectile.SPEED);
+        slowProjTex = loadOrNull(AssetPaths.Projectile.DEFENSIVE);
 
-        enemyBomberFrames[0] = loadOrNull("Defend/Enemy/enemyBomber/EnemyBM1.png");
-        enemyBomberFrames[1] = loadOrNull("Defend/Enemy/enemyBomber/EnemyBM2.png");
-        enemyBomberFrames[2] = loadOrNull("Defend/Enemy/enemyBomber/EnemyBM3.png");
-        enemyBomberFrames[3] = loadOrNull("Defend/Enemy/enemyBomber/EnemyBM4.png");
+        // Traps
+        trapTex = loadOrNull(AssetPaths.Trap.BASE);
+        trapAttackTex = loadOrNull(AssetPaths.Trap.ATTACK);
+        trapSlowTex = loadOrNull(AssetPaths.Trap.SLOW);
+        trapBombTex = loadOrNull(AssetPaths.Trap.BOMB);
 
-        towerTex = loadOrNull("Defend/Tower/Tower2.png");
-        maintowertex = loadOrNull("Defend/Tower/MainTower.png");
-        tower1Tex = loadOrNull("Defend/Tower/TowerAOE.png");
-        tower2Tex = loadOrNull("Defend/Tower/TowerSpeed.png");
-        tower3Tex = loadOrNull("Defend/Tower/TowerDefensif.png");
-        towerAOEFrames[0] = loadOrNull("Defend/Tower/TowerAOE/TowerAOE1.png");
-        towerAOEFrames[1] = loadOrNull("Defend/Tower/TowerAOE/TowerAOE2.png");
+        // Buttons
+        removeBtnTex = loadOrNull(AssetPaths.Ui.BTN_REMOVE);
+        PauseBtntex = loadOrNull(AssetPaths.Ui.BTN_PAUSE);
 
-        towerSpeedFrames[0] = loadOrNull("Defend/Tower/TowerSpeed/TowerSpeed1.png");
-        towerSpeedFrames[1] = loadOrNull("Defend/Tower/TowerSpeed/TowerSpeed2.png");
+        // UI - Tower/Trap selection
+        UITowerAOE = loadOrNull(AssetPaths.Ui.ICON_TOWER_AOE);
+        UITowerSpeed = loadOrNull(AssetPaths.Ui.ICON_TOWER_SPEED);
+        UITowerDefensif = loadOrNull(AssetPaths.Ui.ICON_TOWER_DEFENSIVE);
+        UITrapAttack = loadOrNull(AssetPaths.Ui.ICON_TRAP_ATTACK);
+        UITrapSlow = loadOrNull(AssetPaths.Ui.ICON_TRAP_SLOW);
+        UITrapBomb = loadOrNull(AssetPaths.Ui.ICON_TRAP_BOMB);
+        goldIconTex = loadOrNull(AssetPaths.Ui.ICON_GOLD);
 
-        towerDefensifFrames[0] = loadOrNull("Defend/Tower/TowerDefensif/TowerDefensif1.png");
-        towerDefensifFrames[1] = loadOrNull("Defend/Tower/TowerDefensif/TowerDefensif2.png");
-        towerDefensifFrames[2] = loadOrNull("Defend/Tower/TowerDefensif/TowerDefensif3.png");
+        // UI - Win/Lose
+        WinUI = loadOrNull(AssetPaths.Ui.WIN);
+        LoseUI = loadOrNull(AssetPaths.Ui.LOSE);
+        BtnNext = loadOrNull(AssetPaths.Ui.BTN_NEXT);
+        BtnMenu = loadOrNull(AssetPaths.Ui.BTN_MENU);
+        BtnRetry = loadOrNull(AssetPaths.Ui.BTN_RETRY);
+        BtnMode = loadOrNull(AssetPaths.Ui.MODE_SELECTION);
 
-        projTex  = loadOrNull("Defend/Projectile/Projectile2.png");
-        projtowtex = loadOrNull("Defend/Projectile/Projectile1.png");
-        aoeProjTex = loadOrNull("Defend/Projectile/ProjectileAOE.png");
-        fastProjTex= loadOrNull("Defend/Projectile/ProjectileSpeed.png");
-        slowProjTex= loadOrNull("Defend/Projectile/ProjectileDefensif.png");
-        explosionTex = loadOrNull("Defend/Explosion.png");
-
-        trapTex = loadOrNull("Defend/Trap/Trap.png");
-        trapAttackTex = loadOrNull("Defend/Trap/TrapAttack.png");
-        trapSlowTex   = loadOrNull("Defend/Trap/TrapSlow.png");
-        trapBombTex   = loadOrNull("Defend/Trap/TrapBomb.png");
-
-        removeBtnTex = loadOrNull("Defend/Button/BtnRemove.png");
-        PauseBtntex = loadOrNull("Defend/Button/BtnPause.png");
-
-        UITowerAOE = loadOrNull("Defend/UI/UITowerAOE.png");
-        UITowerSpeed = loadOrNull("Defend/UI/UITowerSpeed.png");
-        UITowerDefensif = loadOrNull("Defend/UI/UITowerDefend.png");
-        UITrapAttack = loadOrNull("Defend/UI/UITrapAttack.png");
-        UITrapSlow = loadOrNull("Defend/UI/UITrapSlow.png");
-        UITrapBomb = loadOrNull("Defend/UI/UITrapBomb.png");
-
-        goldIconTex = loadOrNull("Defend/UI/GoldIcon.png");
-
-        WinUI = loadOrNull("Defend/UI/LoseAndWin/WinUI.png");
-        LoseUI = loadOrNull("Defend/UI/LoseAndWin/LoseUI.png");
-        BtnNext = loadOrNull("Defend/UI/LoseAndWin/BtnNext.png");
-        BtnMenu = loadOrNull("Defend/UI/LoseAndWin/BtnMenu.png");
-        BtnRetry = loadOrNull("Defend/UI/LoseAndWin/BtnRetry.png");
-        BtnMode = loadOrNull("Defend/UI/LoseAndWin/ModeSelection.png");
-
-        PauseUI = loadOrNull("Defend/UI/PauseUI/PauseUI.png");
-        MenuBtn = loadOrNull("Defend/UI/PauseUI/MenuBtn.png");
-        ResumeBtn = loadOrNull("Defend/UI/PauseUI/ResumeBtn.png");
-        SettingBtn = loadOrNull("Defend/UI/PauseUI/SettingBtn.png");
+        // UI - Pause
+        PauseUI = loadOrNull(AssetPaths.Ui.PAUSE);
+        MenuBtn = loadOrNull(AssetPaths.Ui.BTN_PAUSE_MENU);
+        ResumeBtn = loadOrNull(AssetPaths.Ui.BTN_RESUME);
+        SettingBtn = loadOrNull(AssetPaths.Ui.BTN_SETTINGS);
     }
 
     private static Texture loadOrNull(String path) {

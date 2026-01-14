@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import io.DutchSlayer.attack.player.Player;
+import io.DutchSlayer.config.AssetPaths;
 
 public class AssaultRifle implements Weapon {
 
@@ -17,7 +18,7 @@ public class AssaultRifle implements Weapon {
 
     public AssaultRifle() {
         this.ammo = 60;
-        this.fireSound = Gdx.audio.newSound(Gdx.files.internal("player/pistol.mp3"));
+        this.fireSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.PISTOL));
     }
 
 
@@ -56,7 +57,7 @@ public class AssaultRifle implements Weapon {
             }
             float angle = player.getFireAngle();
 
-            Texture playerBulletTexture = new Texture(Gdx.files.internal("player/bullet.png"));
+            Texture playerBulletTexture = new Texture(Gdx.files.internal(AssetPaths.Player.BULLET));
 
             Bullet bullet = new Bullet(centerX, fireY, angle, false);
             bullet.setTexture(playerBulletTexture);

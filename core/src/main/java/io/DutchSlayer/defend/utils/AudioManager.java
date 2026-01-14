@@ -3,6 +3,7 @@ package io.DutchSlayer.defend.utils;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import io.DutchSlayer.config.AssetPaths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,25 +63,28 @@ public class AudioManager {
     }
 
     private static void initializeConfigurations() {
-        soundPaths.put(SoundType.BUILDING, "assets/SFX/Building.mp3");
-        soundPaths.put(SoundType.TRAP, "assets/SFX/trap.mp3");
-        soundPaths.put(SoundType.BUTTON_CLICK, "assets/SFX/BtnClick.mp3");
-        soundPaths.put(SoundType.NAVBAR_SELECT, "assets/SFX/SelectNavbar.mp3");
-        soundPaths.put(SoundType.TOWER_SHOOT, "SFX/TowerShoot.mp3");
-        soundPaths.put(SoundType.AOE_SHOOT, "assets/SFX/TowerAoe.mp3");
-        soundPaths.put(SoundType.SLOW_SHOOT, "assets/SFX/WindPassing.mp3");
-        soundPaths.put(SoundType.ENEMY_SHOOT, "assets/SFX/EnemyShoot.mp3");
-        soundPaths.put(SoundType.BOSS_SHOOT, "assets/SFX/BossShoot.mp3");
-        soundPaths.put(SoundType.ENEMY_DEATH, "assets/SFX/EnemyDeath.mp3");
-        soundPaths.put(SoundType.TRAP_ATTACK, "assets/SFX/TrapSpike.mp3");
-        soundPaths.put(SoundType.TRAP_SLOW, "assets/SFX/TrapSlow.mp3");
-        soundPaths.put(SoundType.TRAP_EXPLOSION, "assets/SFX/TrapBomb.mp3");
-        soundPaths.put(SoundType.TOWER_BREAK, "assets/SFX/TowerBreak.mp3");
-        musicPaths.put(MusicType.MAIN_MENU, "assets/Music/MainSound.mp3");
-        musicPaths.put(MusicType.TOWER_DEFENSE, "assets/Music/Backsound.mp3");
-        musicPaths.put(MusicType.BOSS_BATTLE, "assets/Music/BossMusic.mp3");
-        musicPaths.put(MusicType.VICTORY, "assets/Music/VictoryMusic.mp3");
-        musicPaths.put(MusicType.DEFEAT, "assets/Music/DefeatMusic.mp3");
+        // Sound effects - using new organized structure
+        soundPaths.put(SoundType.BUILDING, AssetPaths.Sfx.BUILDING);
+        soundPaths.put(SoundType.TRAP, AssetPaths.Sfx.TRAP_PLACE);
+        soundPaths.put(SoundType.BUTTON_CLICK, AssetPaths.Sfx.BUTTON_CLICK);
+        soundPaths.put(SoundType.NAVBAR_SELECT, AssetPaths.Sfx.SELECT_NAVBAR);
+        soundPaths.put(SoundType.TOWER_SHOOT, AssetPaths.Sfx.TOWER_SHOOT);
+        soundPaths.put(SoundType.AOE_SHOOT, AssetPaths.Sfx.TOWER_AOE);
+        soundPaths.put(SoundType.SLOW_SHOOT, AssetPaths.Sfx.WIND_PASSING);
+        soundPaths.put(SoundType.ENEMY_SHOOT, AssetPaths.Sfx.ENEMY_SHOOT);
+        soundPaths.put(SoundType.BOSS_SHOOT, AssetPaths.Sfx.BOSS_SHOOT);
+        soundPaths.put(SoundType.ENEMY_DEATH, AssetPaths.Sfx.ENEMY_DEATH);
+        soundPaths.put(SoundType.TRAP_ATTACK, AssetPaths.Sfx.TRAP_SPIKE);
+        soundPaths.put(SoundType.TRAP_SLOW, AssetPaths.Sfx.TRAP_SLOW);
+        soundPaths.put(SoundType.TRAP_EXPLOSION, AssetPaths.Sfx.TRAP_BOMB);
+        soundPaths.put(SoundType.TOWER_BREAK, AssetPaths.Sfx.TOWER_BREAK);
+        
+        // Music - using new organized structure
+        musicPaths.put(MusicType.MAIN_MENU, AssetPaths.Music.MAIN_MENU);
+        musicPaths.put(MusicType.TOWER_DEFENSE, AssetPaths.Music.GAMEPLAY);
+        musicPaths.put(MusicType.BOSS_BATTLE, AssetPaths.Music.BOSS);
+        musicPaths.put(MusicType.VICTORY, AssetPaths.Music.VICTORY);
+        musicPaths.put(MusicType.DEFEAT, AssetPaths.Music.DEFEAT);
 
         defaultVolumes.put(SoundType.BUILDING, 1.0f);
         defaultVolumes.put(SoundType.TRAP, 1.0f);
@@ -167,8 +171,15 @@ public class AudioManager {
 
     public static void playTowerDeploy() { playSound(SoundType.BUILDING); }
     public static void playTrapDeploy() { playSound(SoundType.TRAP); }
-    public static void PlayBtnSound() { playSound(SoundType.BUTTON_CLICK); }
-    public static void PlayBtnPaper() { playSound(SoundType.NAVBAR_SELECT); }
+    public static void playButtonSound() { playSound(SoundType.BUTTON_CLICK); }
+    public static void playNavbarSelect() { playSound(SoundType.NAVBAR_SELECT); }
+    
+    /** @deprecated Use playButtonSound() instead */
+    @Deprecated
+    public static void PlayBtnSound() { playButtonSound(); }
+    /** @deprecated Use playNavbarSelect() instead */
+    @Deprecated
+    public static void PlayBtnPaper() { playNavbarSelect(); }
     public static void playTowerShootWithVolume(float volume) { playSound(SoundType.TOWER_SHOOT, volume); }
     public static void playAOEShootWithVolume(float volume) { playSound(SoundType.AOE_SHOOT, volume); }
     public static void playSlowProjectileWithVolume(float volume) { playSound(SoundType.SLOW_SHOOT, volume); }

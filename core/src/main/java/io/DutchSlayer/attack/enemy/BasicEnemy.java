@@ -14,6 +14,7 @@ import io.DutchSlayer.attack.enemy.fsm.EnemyState;
 import io.DutchSlayer.attack.player.weapon.Bullet;
 import io.DutchSlayer.attack.player.weapon.Grenade;
 import io.DutchSlayer.attack.screens.GameScreen;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.utils.Constant;
 
 public class BasicEnemy {
@@ -75,14 +76,14 @@ public class BasicEnemy {
         this.fsm = new EnemyFSM(this);
         configureWeaponByType();
         if (attackType == AttackType.STRAIGHT_SHOOT || attackType == AttackType.BURST_FIRE || attackType == AttackType.ARC_GRENADE) {
-            shootSound = Gdx.audio.newSound(Gdx.files.internal("player/pistol.mp3"));
+            shootSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.ENEMY_SHOOT));
         }
 
         if (attackType == AttackType.ARC_GRENADE || attackType == AttackType.BURST_FIRE) {
-            this.throwGrenadeSound = Gdx.audio.newSound(Gdx.files.internal("player/grenade_throw.mp3"));
+            this.throwGrenadeSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.GRENADE_THROW));
         }
 
-        deathSound = Gdx.audio.newSound(Gdx.files.internal("enemy/enemy_death.mp3"));
+        deathSound = Gdx.audio.newSound(Gdx.files.internal(AssetPaths.Sfx.ENEMY_DEATH_ATTACK));
 
         this.visuals = new EnemyVisuals(this.attackType);
     }
@@ -172,10 +173,20 @@ public class BasicEnemy {
         }
     }
 
+    /**
+     * @deprecated No longer used, kept for compatibility
+     */
+    @Deprecated
     public void setChasePrepared() {
+        // Intentionally empty - deprecated method
     }
 
+    /**
+     * @deprecated No longer used, kept for compatibility
+     */
+    @Deprecated
     public void setChaseDelayTimer() {
+        // Intentionally empty - deprecated method
     }
 
     public EnemyState getCurrentState() {
@@ -321,7 +332,7 @@ public class BasicEnemy {
         boolean shootRight = playerRef.x > x;
         float angle = shootRight ? 0f : (float) Math.PI;
 
-        Texture bulletTex = new Texture(Gdx.files.internal("player/bullet.png"));
+        Texture bulletTex = new Texture(Gdx.files.internal(AssetPaths.Player.BULLET));
         TextureRegion region = new TextureRegion(bulletTex);
 
         if (!shootRight) {

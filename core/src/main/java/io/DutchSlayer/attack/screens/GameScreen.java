@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import io.DutchSlayer.Main;
+import io.DutchSlayer.config.AssetPaths;
 import io.DutchSlayer.attack.boss.TankBoss;
 import io.DutchSlayer.attack.enemy.AttackType;
 import io.DutchSlayer.attack.enemy.BasicEnemy;
@@ -110,8 +111,8 @@ public class GameScreen implements Screen {
 
         loadTextures();
 
-        this.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgrounds/background.mp3"));
-        this.bossMusic = Gdx.audio.newMusic(Gdx.files.internal("boss/boss_music.mp3"));
+        this.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal(AssetPaths.Music.BACKGROUND));
+        this.bossMusic = Gdx.audio.newMusic(Gdx.files.internal(AssetPaths.Music.BOSS_FIGHT));
 
         this.backgroundMusic.setLooping(true);
         this.bossMusic.setLooping(true);
@@ -134,21 +135,23 @@ public class GameScreen implements Screen {
     }
 
     private void loadTextures() {
-        terrainTexture = new Texture(Gdx.files.internal("backgrounds/terrain.png"));
-        terrain2Texture = new Texture(Gdx.files.internal("backgrounds/terrain2.png"));
-        backgroundTexture = new Texture(Gdx.files.internal("backgrounds/sky.png"));
-        bgTreeTexture = new Texture(Gdx.files.internal("backgrounds/bgTree.png"));
-        bgMountainTexture = new Texture(Gdx.files.internal("backgrounds/bgMountain.png"));
-        wallTexture = new Texture(Gdx.files.internal("boss/wall.png"));
-        grenadeTexture = new Texture(Gdx.files.internal("player/grenade.png"));
-        explosionTexture = new Texture(Gdx.files.internal("player/explosion.png"));
-        vnScene1Bg = new Texture(Gdx.files.internal("story/scene1.png"));
-        vnScene2Bg = new Texture(Gdx.files.internal("story/scene2.png"));
-        vnScene3Bg = new Texture(Gdx.files.internal("story/scene3.png"));
-        vnScene4Bg = new Texture(Gdx.files.internal("story/scene4.png"));
-        vnScene5Bg = new Texture(Gdx.files.internal("story/scene5.png"));
-        vnScene6Bg = new Texture(Gdx.files.internal("story/scene6.png"));
-        vnScene7Bg = new Texture(Gdx.files.internal("story/scene7.png"));
+        terrainTexture = new Texture(Gdx.files.internal(AssetPaths.Backgrounds.TERRAIN));
+        terrain2Texture = new Texture(Gdx.files.internal(AssetPaths.Backgrounds.TERRAIN_2));
+        backgroundTexture = new Texture(Gdx.files.internal(AssetPaths.Backgrounds.SKY));
+        bgTreeTexture = new Texture(Gdx.files.internal(AssetPaths.Backgrounds.TREE));
+        bgMountainTexture = new Texture(Gdx.files.internal(AssetPaths.Backgrounds.MOUNTAIN));
+        wallTexture = new Texture(Gdx.files.internal(AssetPaths.Boss.WALL));
+        grenadeTexture = new Texture(Gdx.files.internal(AssetPaths.Player.GRENADE));
+        explosionTexture = new Texture(Gdx.files.internal(AssetPaths.Player.EXPLOSION));
+        
+        // Story scene backgrounds
+        vnScene1Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(1)));
+        vnScene2Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(2)));
+        vnScene3Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(3)));
+        vnScene4Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(4)));
+        vnScene5Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(5)));
+        vnScene6Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(6)));
+        vnScene7Bg = new Texture(Gdx.files.internal(AssetPaths.Story.getScene(7)));
 
         float wallWidth = 100f;
         float wallHeight = 300f;
@@ -245,7 +248,7 @@ public class GameScreen implements Screen {
         int placed = 0;
         int attempts = 0;
 
-        Texture treeTexture = new Texture(Gdx.files.internal("trees/tree.png"));
+        Texture treeTexture = new Texture(Gdx.files.internal(AssetPaths.Objects.TREE));
 
         while (placed < targetCount && attempts < maxAttempts) {
             Tree candidate = Tree.generateFixed(mapWidth, rng, treeTexture);

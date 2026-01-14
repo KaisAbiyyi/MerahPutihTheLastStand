@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
+import io.DutchSlayer.config.AssetPaths;
 
 public class PlayerVisuals {
     private Texture idleTexture;
@@ -45,43 +46,43 @@ public class PlayerVisuals {
     }
 
     private void loadAssets() {
-        idleTexture = new Texture(Gdx.files.internal("player/player_idle.png"));
+        idleTexture = new Texture(Gdx.files.internal(AssetPaths.Player.IDLE));
         idleFrame = new TextureRegion(idleTexture);
 
         Array<TextureRegion> runFrames = new Array<>();
         for (int i = 1; i <= 5; i++) {
-            Texture runTex = new Texture(Gdx.files.internal("player/player_run" + i + ".png"));
+            Texture runTex = new Texture(Gdx.files.internal(String.format(AssetPaths.Player.RUN_FRAME, i)));
             runTextures.add(runTex);
             TextureRegion runRegion = new TextureRegion(runTex);
             runFrames.add(runRegion);
         }
         walkAnimation = new Animation<>(0.1f, runFrames, Animation.PlayMode.LOOP);
 
-        deadTexture = new Texture(Gdx.files.internal("player/player_dead.png"));
+        deadTexture = new Texture(Gdx.files.internal(AssetPaths.Player.DEAD));
         deadFrame = new TextureRegion(deadTexture);
 
-        arIdleTexture = new Texture(Gdx.files.internal("player/player_run_ar1.png"));
+        arIdleTexture = new Texture(Gdx.files.internal(String.format(AssetPaths.Player.RUN_AR_FRAME, 1)));
         arIdleFrame = new TextureRegion(arIdleTexture);
 
         Array<TextureRegion> arRunFrames = new Array<>();
         for (int i = 1; i <= 8; i++) {
-            Texture arRunTex = new Texture(Gdx.files.internal("player/player_run_ar" + i + ".png"));
+            Texture arRunTex = new Texture(Gdx.files.internal(String.format(AssetPaths.Player.RUN_AR_FRAME, i)));
             arRunTextures.add(arRunTex);
             TextureRegion arRunRegion = new TextureRegion(arRunTex);
             arRunFrames.add(arRunRegion);
         }
         arWalkAnimation = new Animation<>(0.1f, arRunFrames, Animation.PlayMode.LOOP);
 
-        duckTexture = new Texture(Gdx.files.internal("player/player_duck.png"));
+        duckTexture = new Texture(Gdx.files.internal(AssetPaths.Player.DUCK));
         duckFrame = new TextureRegion(duckTexture);
 
-        arDuckTexture = new Texture(Gdx.files.internal("player/player_duck_ar.png"));
+        arDuckTexture = new Texture(Gdx.files.internal(AssetPaths.Player.DUCK_AR));
         arDuckFrame = new TextureRegion(arDuckTexture);
 
-        dashTexture = new Texture(Gdx.files.internal("player/player_dash.png"));
+        dashTexture = new Texture(Gdx.files.internal(AssetPaths.Player.DASH));
         dashFrame = new TextureRegion(dashTexture);
 
-        jumpTexture = new Texture(Gdx.files.internal("player/player_jump.png"));
+        jumpTexture = new Texture(Gdx.files.internal(AssetPaths.Player.JUMP));
         jumpFrame = new TextureRegion(jumpTexture);
     }
 
